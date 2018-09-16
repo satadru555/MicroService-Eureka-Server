@@ -1,0 +1,190 @@
+https://satadru1991@gmail.com
+
+
+School Service URI for StudentService
+http://localhost:9098/getSchoolDetails/abcschool
+
+spring-hystrix-student-service
+
+http://localhost:8098/getStudentDetailsForSchool/abcschool
+
+http://localhost:8098/getStudentDetailsForSchool/abcschool
+
+
+Zuul Gateway URI for StudentService
+http://localhost:8081/refresh
+http://localhost:8081/student-service/getStudentDetailsForSchool/abcschool
+http://localhost:8888/application/default
+
+Dummy Client
+http://localhost:8080/msg
+http://localhost:8080/refresh
+
+http://localhost:8888/config-server-client/development
+
+git status
+
+git add .
+
+git commit -m"initial commit"
+
+git push origin master
+
+
+
+
+PAN: BJGPB7944E
+Adhar: 7090 0774 4479
+Passport: L2047368
+
+20th September, 1989
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------Studen-Service-Details-------------------------------------------------------------------
+
+server:
+  port: 8098
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
+    healthcheck:
+      enabled: true
+      lease:
+      duration: 5
+
+spring:
+  application:
+    name: student-service
+  data:
+       mongodb:
+               uri: mongodb://localhost/core_db
+               username: root
+               password: root
+       port: 27017
+       host: localhost
+
+management:
+  security:
+    enabled: false
+
+logging:
+  level:
+    com.example.howtodoinjava: DEBUG
+    
+    profiles:
+    active : development
+
+
+cloud:
+  config:
+     uri : http://localhost:8888
+     
+
+security:
+   enabled : false
+    
+    
+    
+    
+---------------------------------Studen-Service-Details-------------------------------------------------------------------
+
+
+
+server:
+      port : 8888
+
+spring:
+       cloud:
+             config:
+                   server: 
+                   git:
+                     uri: https://github.com/satadru555/config-server-repo
+                   
+management:
+           security:
+                  enabled: false
+
+----------------------------bootstrap.properties-------------------------
+
+spring.application.name=spring-boot-zuulgatwayproxy
+#Active Profile - will relate to development properties file in the server. 
+#If this property is absent then,default profile will be activated which is 
+#theh property file without any environment name at the end. 
+spring.profiles.active=development
+# N.B. this is the default:
+spring.cloud.config.uri=http://localhost:8888
+management.security.enabled=false
+
+
+----------------------------bootstrap.properties-------------------------
+
+-----------------------------Zuul.properties-----------------------------
+
+spring:
+      application:
+               name: spring-boot-zuulgatwayproxy
+
+#Will start the gateway server @8081
+server:
+  port: 8081
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
+    healthcheck:
+      enabled: true
+      lease:
+      duration: 5
+
+
+#Zuul routes. Here for /student-service path, we are routing to localhost:8098 with extra path after that.
+zuul:
+   routes:
+          student-service:
+                        url: http://localhost:8098
+ 
+#Ribbon is auto integrated with Zuul and for this exercise we are not using that.
+#ribbon:
+#      eureka:
+#              enabled: false
+ 
+#Will start the gateway server @8081
+
+
+-----------------------------Zuul.properties-----------------------------
+
+
+       
+       
+
+
