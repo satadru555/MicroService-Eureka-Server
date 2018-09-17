@@ -5,11 +5,11 @@ School Service URI for StudentService
 http://localhost:9098/getSchoolDetails/abcschool
 
 spring-hystrix-student-service
-
+http://localhost:8098/getStudentDetailsForSchool/abcschool
 http://localhost:8098/getStudentDetailsForSchool/abcschool
 
-http://localhost:8098/getStudentDetailsForSchool/abcschool
-
+spring-hystrix-companyservice
+http://localhost:9099/getStudentDetails/abcschool
 
 Zuul Gateway URI for StudentService
 http://localhost:8081/refresh
